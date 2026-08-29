@@ -1,0 +1,201 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * COSMOS design system — premium, editorial, minimal.
+ * Deep near-black canvas, hairline structure, warm platinum accent.
+ * All colors in oklch. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-hairline: var(--hairline);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --font-display: "Jost", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.125rem;
+  --background: oklch(0.14 0 0);
+  --foreground: oklch(0.97 0.002 260);
+  --surface: oklch(0.17 0 0);
+  --surface-raised: oklch(0.2 0 0);
+  --card: oklch(0.17 0 0);
+  --card-foreground: oklch(0.97 0.002 260);
+  --popover: oklch(0.17 0 0);
+  --popover-foreground: oklch(0.97 0.002 260);
+  --primary: oklch(0.97 0.002 260);
+  --primary-foreground: oklch(0.14 0 0);
+  --secondary: oklch(0.24 0 0);
+  --secondary-foreground: oklch(0.97 0.002 260);
+  --muted: oklch(0.22 0 0);
+  --muted-foreground: oklch(0.68 0.005 260);
+  --accent: oklch(0.86 0.045 88);
+  --accent-foreground: oklch(0.14 0 0);
+  --destructive: oklch(0.6 0.19 25);
+  --destructive-foreground: oklch(0.97 0 0);
+  --border: oklch(1 0 0 / 12%);
+  --hairline: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.86 0.045 88 / 60%);
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-foreground);
+  }
+}
+
+@utility shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 84rem;
+  padding-inline: 1.5rem;
+  @media (min-width: 1024px) {
+    padding-inline: 3rem;
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+}
+
+@utility display-lg {
+  font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  font-size: clamp(2rem, 4.6vw, 3.5rem);
+}
+
+@utility hairline-grid {
+  border-top: 1px solid var(--color-hairline);
+  border-left: 1px solid var(--color-hairline);
+}
+
+@utility hairline-cell {
+  border-right: 1px solid var(--color-hairline);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+@utility link-underline {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+@utility star-field {
+  background-image:
+    radial-gradient(circle at 18% 24%, oklch(1 0 0 / 0.1) 0.5px, transparent 1px),
+    radial-gradient(circle at 72% 62%, oklch(1 0 0 / 0.08) 0.5px, transparent 1px),
+    radial-gradient(circle at 44% 82%, oklch(1 0 0 / 0.06) 0.5px, transparent 1px);
+  background-size: 180px 180px, 260px 260px, 320px 320px;
+}
+
+@utility reveal {
+  animation: cosmos-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cosmos-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility spin-slow {
+  animation: cosmos-spin 60s linear infinite;
+}
+
+@keyframes cosmos-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
