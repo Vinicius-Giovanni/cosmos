@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 export function CtaPrimary({
   to,
@@ -14,6 +15,9 @@ export function CtaPrimary({
   return (
     <Link
       to={to}
+      onClick={() => {
+        if (to === "/contato") trackEvent("click_contact");
+      }}
       className={`group inline-flex items-center gap-3 bg-primary px-7 py-4 text-[0.75rem] uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-85 ${className}`}
     >
       {children}

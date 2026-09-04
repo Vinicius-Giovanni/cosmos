@@ -1,0 +1,17 @@
+{
+    "name": "Cosmos",
+    "short_name": "Cosmos",
+    "description": "Empresa de intermediação e soluções.",
+    "lang": "pt-BR",
+    "start_url": "/",
+    "display": "browser",
+    "background_color": "#0a0a0a",
+    "theme_color": "#0a0a0a",
+    "icons": [
+        {
+            "src": "/favicon.png",
+            "sizes": "any",
+            "type": "image/png"
+        }
+    ]
+}

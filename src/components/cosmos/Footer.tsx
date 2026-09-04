@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import logo from "@/assets/cosmos-logo.png.asset.json";
+import logo from "@/assets/Logo-type-1-no-background.png";
 import { solutions } from "@/data/solutions";
 
 export function Footer() {
@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="border-t border-hairline">
       <div className="shell grid gap-14 py-20 md:grid-cols-[1.4fr_1fr_1fr] md:py-24">
         <div>
-          <img src={logo.url} alt="Cosmos" className="h-7 w-auto" />
+          <img src={logo} alt="Cosmos" className="h-7 w-auto" />
           <p className="mt-8 max-w-sm text-sm leading-relaxed text-muted-foreground">
             Empresa de soluções. Um único ponto de contato entre a sua necessidade e os
             especialistas, tecnologias e recursos que a resolvem.

@@ -4,24 +4,16 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { MessageCircle } from "lucide-react";
 import { PageHero } from "@/components/cosmos/ui";
+import { trackEvent } from "@/lib/analytics";
+import { pageHead } from "@/lib/seo";
+
 
 const title = "Contato | Cosmos";
 const description =
   "Conte para a Cosmos o que você precisa. Um único ponto de contato para estruturar, conectar e coordenar a sua solução.";
 
 export const Route = createFileRoute("/contato")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:url", content: "/contato" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: [{ rel: "canonical", href: "/contato" }],
-  }),
+  head: () => pageHead({ title, description, path: "/contato" }),
   component: Contato,
 });
 
@@ -63,6 +55,7 @@ function Contato() {
 
     setErrors({});
     setSending(true);
+    trackEvent("form_submit");
 
     const linhas = [
       `Nome: ${parsed.data.nome}`,
@@ -181,6 +174,7 @@ function Contato() {
                 href="https://wa.me/?text=Ol%C3%A1%2C%20Cosmos.%20Tenho%20uma%20necessidade%20e%20gostaria%20de%20conversar."
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent("click_whatsapp")}
                 className="group mt-7 inline-flex items-center gap-3 border border-border px-6 py-4 text-[0.75rem] uppercase tracking-[0.2em] text-foreground transition-colors hover:border-accent hover:text-accent"
               >
                 <MessageCircle className="size-4" />

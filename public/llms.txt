@@ -1,0 +1,20 @@
+# Cosmos
+
+Empresa de soluções que conecta pessoas e organizações a especialistas, empresas e tecnologias para transformar necessidades em soluções completas.
+
+## Páginas públicas
+
+- https://www.cosmos.com.br/
+- https://www.cosmos.com.br/sobre
+- https://www.cosmos.com.br/como-funciona
+- https://www.cosmos.com.br/cases
+- https://www.cosmos.com.br/contato
+- https://www.cosmos.com.br/solucoes
+- https://www.cosmos.com.br/solucoes/tecnologia
+- https://www.cosmos.com.br/solucoes/data
+- https://www.cosmos.com.br/solucoes/automacao
+- https://www.cosmos.com.br/solucoes/design
+- https://www.cosmos.com.br/solucoes/marketing
+- https://www.cosmos.com.br/solucoes/consultoria
+
+Este arquivo auxilia a descoberta por sistemas de IA e não substitui os mecanismos tradicionais de SEO ou indexação.

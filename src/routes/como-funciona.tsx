@@ -1,23 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { FinalCta, PageHero, SectionHeading } from "@/components/cosmos/ui";
+import { pageHead } from "@/lib/seo";
 
 const title = "Como funciona | Cosmos";
 const description =
   "Entendemos, estruturamos, conectamos, coordenamos e entregamos: o processo da Cosmos do primeiro contato à solução final.";
 
 export const Route = createFileRoute("/como-funciona")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:url", content: "/como-funciona" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: [{ rel: "canonical", href: "/como-funciona" }],
-  }),
+  head: () => pageHead({ title, description, path: "/como-funciona" }),
   component: ComoFunciona,
 });
 

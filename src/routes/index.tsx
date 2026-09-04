@@ -5,24 +5,14 @@ import { SolutionCard } from "@/components/cosmos/SolutionCard";
 import { OrbitMark } from "@/components/cosmos/OrbitMark";
 import { solutions } from "@/data/solutions";
 import { cases } from "@/data/cases";
+import { pageHead } from "@/lib/seo";
 
-const title = "Cosmos | Um contato. Uma gestão. Uma solução.";
+const title = "Cosmos | Soluções para empresas";
 const description =
   "A Cosmos conecta pessoas e organizações às soluções certas, reunindo especialistas, tecnologia e parceiros em um único lugar.";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:url", content: "/" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-  }),
+  head: () => pageHead({ title, description, path: "/"}),
   component: Home,
 });
 

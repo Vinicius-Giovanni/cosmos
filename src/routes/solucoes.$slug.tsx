@@ -1,6 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { CtaPrimary, FinalCta, PageHero } from "@/components/cosmos/ui";
 import { getSolution, solutions } from "@/data/solutions";
+import { breadcrumbSchema } from "@/lib/seo";
+import { pageHead } from "../lib/seo";
 
 export const Route = createFileRoute("/solucoes/$slug")({
   loader: ({ params }) => {
@@ -14,20 +16,27 @@ export const Route = createFileRoute("/solucoes/$slug")({
         meta: [{ title: "Solução não encontrada | Cosmos" }, { name: "robots", content: "noindex" }],
       };
     }
-    const title = `${loaderData.solution.title} | Cosmos`;
-    const description = loaderData.solution.short;
-    return {
-      meta: [
-        { title },
-        { name: "description", content: description },
-        { property: "og:title", content: title },
-        { property: "og:description", content: description },
-        { property: "og:url", content: `/solucoes/${params.slug}` },
-        { name: "twitter:title", content: title },
-        { name: "twitter:description", content: description },
+    const path = `/solucoes/${params.slug}`;
+    return pageHead({
+      title: `${loaderData.solution.title} | Cosmos`,
+      description: loaderData.solution.short,
+      path,
+      schema: [
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: loaderData.solution.title,
+          description: loaderData.solution.description,
+          provider: { "@type": "Organization", name: "Cosmos" },
+          url: `https://www.cosmos.com.br${path}`,
+        },
+        breadcrumbSchema([
+          { name: "Início", path: "/" },
+          { name: "Soluçõse", path: "/solucoes" },
+          { name: loaderData.solution.title, path },
+        ]),
       ],
-      links: [{ rel: "canonical", href: `/solucoes/${params.slug}` }],
-    };
+    });
   },
   component: SolutionPage,
 });
@@ -43,6 +52,16 @@ function SolutionPage() {
         title={solution.title}
         lead={solution.description}
       />
+
+      <nav aria-label="Navegação estrutural" className="border-b border-hairline py-4">
+        <div className="shell text-sm text-muted-foreground">
+          <Link to="/" className="hover:text-foreground">Início</Link>
+          <span aria-hidden="true"> / </span>
+          <Link to="/solucoes" className="hover:text-foreground">Soluções</Link>
+          <span aria-hidden="true"> / </span>
+          <span aria-current="page" className="text-foreground">{solution.title}</span>
+        </div>
+      </nav>
 
       <section className="border-b border-hairline py-20 lg:py-28">
         <div className="shell grid gap-14 lg:grid-cols-2 lg:gap-24">

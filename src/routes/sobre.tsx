@@ -1,24 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { FinalCta, PageHero } from "@/components/cosmos/ui";
 import { OrbitMark } from "@/components/cosmos/OrbitMark";
+import { pageHead } from "@/lib/seo";
 
 const title = "Sobre a Cosmos | Empresa de soluções";
 const description =
   "A Cosmos é uma empresa de soluções criada para simplificar a forma como pessoas e organizações encontram, desenvolvem e implementam soluções.";
 
 export const Route = createFileRoute("/sobre")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:url", content: "/sobre" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: [{ rel: "canonical", href: "/sobre" }],
-  }),
+  head: () => pageHead({ title, description, path:"/sobre"}),
   component: Sobre,
 });
 

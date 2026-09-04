@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/cosmos-logo.png.asset.json";
+import logo from "@/assets/Logo-type-1-no-background.png";
 
 const links = [
   { to: "/solucoes", label: "Soluções" },
@@ -32,7 +32,7 @@ export function Nav() {
     >
       <div className="shell grid h-[72px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 lg:h-20">
         <Link to="/" className="flex min-w-0 items-center" aria-label="Cosmos — página inicial">
-          <img src={logo.url} alt="Cosmos" className="h-7 w-auto shrink-0 lg:h-8" />
+          <img src={logo} alt="Cosmos" className="h-7 w-auto shrink-0 lg:h-8" />
         </Link>
 
         <nav className="hidden items-center gap-9 lg:flex">

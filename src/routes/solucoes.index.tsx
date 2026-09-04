@@ -1,24 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CtaGhost, CtaPrimary, FinalCta, PageHero } from "@/components/cosmos/ui";
 import { solutions } from "@/data/solutions";
+import { pageHead } from "@/lib/seo";
 
 const title = "Soluções | Cosmos";
 const description =
   "Tecnologia, dados, automação, design, marketing e consultoria: as áreas em que a Cosmos estrutura, conecta e coordena soluções sob medida.";
 
 export const Route = createFileRoute("/solucoes/")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:url", content: "/solucoes" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: [{ rel: "canonical", href: "/solucoes" }],
-  }),
+  head: () => pageHead({ title, description, path: "/solucoes" }),
   component: SolucoesPage,
 });
 

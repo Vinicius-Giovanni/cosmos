@@ -2,23 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CtaPrimary, FinalCta, PageHero } from "@/components/cosmos/ui";
 import { cases } from "@/data/cases";
 
-const title = "Cases | Cosmos";
+const title = "Casos demonstrativos | Cosmos";
 const description =
   "Projetos demonstrativos que ilustram como a Cosmos estrutura problema, solução, processo e resultado esperado em cada tipo de necessidade.";
 
 export const Route = createFileRoute("/cases")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:url", content: "/cases" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-    ],
-    links: [{ rel: "canonical", href: "/cases" }],
-  }),
+  head: () => pageHead({ title, description, path: "/cases" }),
   component: CasesPage,
 });
 

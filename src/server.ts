@@ -24,7 +24,7 @@ h3 swallows in-handler throws into a normal 500 response with body
 */
 async function normalizeCatastrophicSsrResponse(response: Response): Promise<Response> {
     if (response.status < 500) return response;
-    const contentype = response.headers.get("content-type") ?? "";
+    const contenType = response.headers.get("content-type") ?? "";
     if (!contentType.includes("application/json")) return response;
 
     const body = await response.clone().text();
